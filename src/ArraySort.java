@@ -1,7 +1,6 @@
 import com.sun.tools.javac.util.ArrayUtils;
 
-import java.util.Arrays;
-import java.util.Comparator;
+import java.util.*;
 
 public class ArraySort {
 
@@ -16,11 +15,25 @@ public class ArraySort {
         modelArray[1] = new Model(1, 14);
         modelArray[2] = new Model(20, 3);
         modelArray[3] = new Model(14, 22);
+        List<Model> modelList = new ArrayList<>();
+        for (int i = 0; i <modelArray.length; i++) {
+            modelList.add(modelArray[i]);
+        }
         Arrays.sort(modelArray, new ModelComparator());
         printModel(modelArray);
+        Collections.sort(modelList, new ModelComparator());
+        printModelList(modelList);
+
     }
     public static void printModel(Model[] models) {
         for (Model model: models) {
+            System.out.println(String.format("Model id: %d age: %d", model.getId(), model.getAge()));
+        }
+    }
+    public static void printModelList(Collection<Model> modelList) {
+        Iterator iterator = modelList.iterator();
+        while (iterator.hasNext()) {
+            Model model = (Model)iterator.next();
             System.out.println(String.format("Model id: %d age: %d", model.getId(), model.getAge()));
         }
     }
