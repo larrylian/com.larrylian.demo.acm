@@ -30,7 +30,7 @@ public class FourSequence {
         String reply = YES;
         if (seq.length == 1) {
             if (seq[0]%4 != 0) {
-                reply = NO;
+                reply = YES;
             }
             return reply;
         }
