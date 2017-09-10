@@ -22,7 +22,9 @@ public class KStr {
                     if (strArray[j] != strArray[i]) {
                         String strTmp = insert(strArray, i, j);
                         if (!map.contains(strTmp)) {
-                            map.add(strTmp);
+                            if (isValid(strTmp)) {
+                                map.add(strTmp);
+                            }
                         }
                     }
                 }
@@ -46,5 +48,21 @@ public class KStr {
             index++;
         }
         return String.valueOf(B);
+    }
+    public static boolean isValid(String str) {
+        char[] chars = str.toCharArray();
+        Stack stack = new Stack();
+        for (char c : chars) {
+            if (c == '(') {
+                stack.push(c);
+            } else {
+                if (stack.isEmpty()) {
+                    return false;
+                } else {
+                    stack.pop();
+                }
+            }
+        }
+        return true;
     }
 }
